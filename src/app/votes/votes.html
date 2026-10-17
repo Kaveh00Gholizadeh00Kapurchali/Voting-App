@@ -1,1 +1,22 @@
-<p>votes works!</p>
+<div class="max w md mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Voting App</h1>
+    <div class="flex gap-2 mb-4">
+        <input [(ngModel)]="newOption" type="text" placeholder="Add Options here" class="border p-2 rounded w-full">
+        <button class="text-white bg-black rounded p-3" (click)="addOption()">Add</button>
+    </div>
+
+    @for (Option of store.options(); track Option.id) {
+        <div class="bg-gray-100 p-3 rounded mb-2">
+            <div class="flex justify-between">
+                <span>{{Option.text}}</span>
+                <div class="flex justify-end gap-2 items-center">
+                    <span>{{Option.votes}} votes</span>
+                    <button class="text-white bg-blue-500 rounded p-3 mt-2 px-2" (click)="store.vote(Option.id)">vote</button>
+                </div>
+            </div>
+            <div class="w-full bg-gray-300 h-2 mt-2 rounded">
+                <div class="bg-green-500 h-2 rounded"></div>
+            </div>
+        </div>
+    }
+</div>
